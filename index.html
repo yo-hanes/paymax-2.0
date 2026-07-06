@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paymax — Secure Digital Asset Escrow & Trust Platform</title>
+  <meta name="description" content="Paymax is a premium, secure peer-to-peer digital asset marketplace built to enable verified traders to safely exchange assets with escrow and smart payment SMS verification.">
+  <meta name="keywords" content="fintech, crypto, p2p trading, escrow, telebirr, cbe, trust score, secure exchange">
+  
+  <!-- CSS Stylesheets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            violet: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0f766e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js and Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="page-transition">
+
+  <!-- ═══════════════════════ NAVBAR (PUBLIC VIEW) ═══════════════════════ -->
+  <nav class="navbar" id="public-navbar">
+    <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#landing" class="flex items-center gap-3 active-nav" id="logo-link">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-teal-500 flex items-center justify-center shadow-lg shadow-violet-500/20">
+          <i data-lucide="shield-check" class="text-white w-5 h-5"></i>
+        </div>
+        <span class="font-bold text-xl tracking-tight">
+          <span class="text-gradient font-extrabold">Pay</span><span class="text-zinc-900 dark:text-zinc-50 font-semibold">max</span>
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#landing" class="nav-link active" data-route="landing">Home</a>
+        <a href="#market" class="nav-link" data-route="market">Crypto Market</a>
+        <a href="#help" class="nav-link" data-route="help">Help Center</a>
+      </div>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" class="w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="Toggle Theme">
+          <i data-lucide="sun" id="theme-icon-light" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="moon" id="theme-icon-dark" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+
+        <a href="#auth" class="btn btn-secondary btn-sm hidden sm:inline-flex" id="login-nav-btn">Log In</a>
+        <a href="#auth" class="btn btn-primary btn-sm" id="cta-nav-btn">Join Marketplace</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ MAIN CONTENT CONTAINER (SPA) ═══════════════════════ -->
+  <main id="app-container" class="relative">
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 1: LANDING PAGE ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-landing" class="page-view active">
+      <section class="hero-section relative">
+        <canvas id="particles-canvas"></canvas>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8 slide-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Invite-First P2P Escrow
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              Trade Digital Assets Safely. <br>
+              <span class="text-gradient">Trade with Verified People,</span> Not Strangers.
+            </h1>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl max-w-xl">
+              Paymax is a premium digital asset marketplace designed to eliminate P2P trading scams using identity verification, escrow protection, and smart payment verification.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#auth" class="btn btn-primary px-8 py-3.5">Join Verified Network</a>
+              <a href="#market" class="btn btn-secondary px-8 py-3.5">Explore Market Prices</a>
+            </div>
+          </div>
+          <!-- Hero Mockup Widget -->
+          <div class="relative flex justify-center lg:justify-end">
+            <div class="glass p-6 w-full max-w-md space-y-6 float-element shadow-2xl border-zinc-200/50 dark:border-zinc-800/50">
+              <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-violet-600/15 flex items-center justify-center text-violet-500">
+                    <i data-lucide="shield-check"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-sm">Secure Escrow Trade</h3>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Trade ID: #PM-882319</p>
+                  </div>
+                </div>
+                <div class="badge-verified"><i data-lucide="check" class="w-3 h-3"></i> Verified Seller</div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex justify-between text-sm">
+                  <span class="text-zinc-500 dark:text-zinc-400">Trading Asset:</span>
+                  <span class="font-semibold flex items-center gap-1.5"><i data-lucide="coins" class="w-4 h-4 text-amber-500"></i> 1,000.00 USDT</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-zinc-500 dark:text-zinc-400">Fiat Exchange:</span>
+                  <span class="font-semibold text-teal-500">124,500.00 ETB (Telebirr)</span>
+                </div>
+                <!-- Escrow state animation -->
+                <div class="p-3 bg-zinc-100 dark:bg-zinc-900 rounded-xl space-y-2 border border-zinc-200 dark:border-zinc-800">
+                  <div class="flex items-center justify-between text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">
+                    <span>ESCROW LOCK STATUS</span>
+                    <span class="text-emerald-500 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> SECURED</span>
+                  </div>
+                  <div class="w-full bg-zinc-200 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-violet-600 to-emerald-500 h-2 w-3/4 rounded-full"></div>
+                  </div>
+                  <p class="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">Funds secured in Paymax Escrow. Safe to pay the seller.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scam Comparison Section -->
+      <section class="py-24 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 space-y-16">
+          <div class="text-center space-y-4 max-w-3xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">The P2P Scam Crisis & Our Defense</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">Informal peer-to-peer markets are rife with fake receipts, chargebacks, and double-spending. Paymax redefines P2P around absolute trust.</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Informal P2P -->
+            <div class="glass p-8 space-y-6 border-red-500/10 bg-red-500/[0.01] dark:bg-red-500/[0.01]">
+              <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-red-500">Informal P2P Markets (High Risk)</h3>
+              <ul class="space-y-4 text-zinc-600 dark:text-zinc-400">
+                <li class="flex items-start gap-3">
+                  <i data-lucide="x-circle" class="text-red-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>Fake Payment Evidence:</strong> Scammers send photoshopped transaction screenshots or fake SMS alerts to trick sellers.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="x-circle" class="text-red-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>No Identity Association:</strong> Strangers disappear after scamming, creating new fake accounts.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="x-circle" class="text-red-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>Chargeback Fraud:</strong> Buyers cancel banking transactions after the cryptocurrency is released.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Paymax -->
+            <div class="glass p-8 space-y-6 border-teal-500/10 bg-teal-500/[0.01] dark:bg-teal-500/[0.01]">
+              <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-500">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-teal-500">Paymax Verified Marketplace (Zero Scams)</h3>
+              <ul class="space-y-4 text-zinc-600 dark:text-zinc-400">
+                <li class="flex items-start gap-3">
+                  <i data-lucide="check-circle-2" class="text-teal-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>Smart SMS Parsing:</strong> Buyers paste bank notification text directly. Paymax verifies receipt structures to prevent fake evidence.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="check-circle-2" class="text-teal-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>Circle of Trust:</strong> Network growth is invite-only and reputation-linked. Inviting scammers degrades your own trust score.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i data-lucide="check-circle-2" class="text-teal-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                  <span><strong>Liveness & KYC:</strong> Every user undergoes liveness checks and government ID validation before placing trades.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features grid -->
+      <section class="py-24 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 space-y-16">
+          <div class="text-center space-y-4 max-w-3xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ecosystem Architecture</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">Four integrated layers working in synchronization to guarantee absolute trading security.</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Escrow -->
+            <div class="glass-card p-6 space-y-4 bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800">
+              <div class="w-10 h-10 rounded-xl bg-violet-600/10 flex items-center justify-center text-violet-500">
+                <i data-lucide="lock" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-lg font-bold">1. Escrow Protection</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Cryptocurrency must be pre-deposited before offers go live, preventing fake liquidity listings.</p>
+            </div>
+            <!-- Smart Verify -->
+            <div class="glass-card p-6 space-y-4 bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800">
+              <div class="w-10 h-10 rounded-xl bg-violet-600/10 flex items-center justify-center text-violet-500">
+                <i data-lucide="smartphone" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-lg font-bold">2. Smart SMS Verification</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Pasted confirmation messages from Telebirr, CBE, or other banks are parsed instantly to score proof legitimacy.</p>
+            </div>
+            <!-- Circle of Trust -->
+            <div class="glass-card p-6 space-y-4 bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800">
+              <div class="w-10 h-10 rounded-xl bg-violet-600/10 flex items-center justify-center text-violet-500">
+                <i data-lucide="users-round" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-lg font-bold">3. Circle of Trust</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">An invitation-linking hierarchy that bridges and propagates reputational score gains or penalties.</p>
+            </div>
+            <!-- Fraud Engine -->
+            <div class="glass-card p-6 space-y-4 bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800">
+              <div class="w-10 h-10 rounded-xl bg-violet-600/10 flex items-center justify-center text-violet-500">
+                <i data-lucide="fingerprint" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-lg font-bold">4. Fingerprint & AI Auditing</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Escalating limits, device hash monitoring, and rapid transfer flags isolate fraud vectors instantly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap Section -->
+      <section class="py-24 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 space-y-16">
+          <div class="text-center space-y-4 max-w-3xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Our Development Roadmap</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">Building the standard for secure peer-to-peer asset settlement.</p>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8 relative">
+            <div class="space-y-4">
+              <div class="text-xl font-bold text-violet-500 flex items-center gap-2">
+                <span>Phase 1</span>
+                <span class="text-xs px-2 py-0.5 bg-emerald-500/15 text-emerald-500 rounded font-semibold border border-emerald-500/25">Live</span>
+              </div>
+              <h4 class="font-bold text-lg">Verification Core</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Multi-step liveness scanner, mobile OTP verification, and document capture.</p>
+            </div>
+            <div class="space-y-4">
+              <div class="text-xl font-bold text-violet-500 flex items-center gap-2">
+                <span>Phase 2</span>
+                <span class="text-xs px-2 py-0.5 bg-emerald-500/15 text-emerald-500 rounded font-semibold border border-emerald-500/25">Live</span>
+              </div>
+              <h4 class="font-bold text-lg">Smart P2P Escrow</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Pre-deposit locks, active trade chats, and SMS verification parser engine.</p>
+            </div>
+            <div class="space-y-4">
+              <div class="text-xl font-bold text-violet-500 flex items-center gap-2">
+                <span>Phase 3</span>
+                <span class="text-xs px-2 py-0.5 bg-violet-500/15 text-violet-500 rounded font-semibold border border-violet-500/25">In-Dev</span>
+              </div>
+              <h4 class="font-bold text-lg">Circle of Trust</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Interactive user relationship graph mapping and automated limit scaling.</p>
+            </div>
+            <div class="space-y-4">
+              <div class="text-xl font-bold text-zinc-500 flex items-center gap-2">
+                <span>Phase 4</span>
+                <span class="text-xs px-2 py-0.5 bg-zinc-500/15 text-zinc-500 rounded font-semibold border border-zinc-500/25">Q3 2026</span>
+              </div>
+              <h4 class="font-bold text-lg">Global Expansion</h4>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Amharic & Arabic translation integration and support for multi-chain stablecoins.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section class="py-24 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-4xl mx-auto px-6 space-y-12">
+          <h2 class="text-3xl font-extrabold tracking-tight text-center">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <button class="w-full flex items-center justify-between font-bold text-left text-zinc-900 dark:text-zinc-50 focus:outline-none" onclick="toggleFaq(this)">
+                <span>What is the hybrid onboarding model?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200"></i>
+              </button>
+              <div class="text-zinc-500 dark:text-zinc-400 text-sm hidden pt-2">
+                Paymax allows both invited and uninvited users. Invited users receive an accelerated verification workflow. Uninvited users can register but undergo rigorous KYC validation and a manual audit before they can begin trading.
+              </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <button class="w-full flex items-center justify-between font-bold text-left text-zinc-900 dark:text-zinc-50 focus:outline-none" onclick="toggleFaq(this)">
+                <span>How does Smart Payment Verification work?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200"></i>
+              </button>
+              <div class="text-zinc-500 dark:text-zinc-400 text-sm hidden pt-2">
+                Instead of uploading easily forged screenshots, buyers paste the transaction confirmation SMS from their bank (like CBE or Telebirr). Paymax's secure algorithm parses the transaction code, amount, and reference details, matching it automatically with current escrow data.
+              </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <button class="w-full flex items-center justify-between font-bold text-left text-zinc-900 dark:text-zinc-50 focus:outline-none" onclick="toggleFaq(this)">
+                <span>What happens if I invite a bad user?</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-200"></i>
+              </button>
+              <div class="text-zinc-500 dark:text-zinc-400 text-sm hidden pt-2">
+                Invitations link your reputation inside the Circle of Trust. If a user you invite engages in scam behaviors, dispute losses, or KYC policy violations, your Trust Score will receive a corresponding negative penalty.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 border-t border-zinc-200 dark:border-zinc-800 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-teal-500 flex items-center justify-center">
+            <i data-lucide="shield-check" class="text-white w-4 h-4"></i>
+          </div>
+          <span class="font-bold text-md text-zinc-500 dark:text-zinc-400">© 2026 Paymax Inc. All rights reserved.</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+          <a href="#help" class="hover:text-zinc-50">Support</a>
+          <a href="#settings" class="hover:text-zinc-50">Security</a>
+          <a href="#market" class="hover:text-zinc-50">Market Rates</a>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 2: CRYPTO MARKET VIEW ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-market" class="page-view">
+      <!-- Market Ticker Banner -->
+      <div class="bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 py-3 overflow-hidden">
+        <div class="flex gap-12 items-center text-sm font-semibold tracking-wider whitespace-nowrap animate-marquee" id="market-ticker-banner">
+          <!-- Populated dynamically in JavaScript -->
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-zinc-200 dark:border-zinc-800 pb-6">
+          <div class="space-y-1">
+            <h1 class="text-3xl font-extrabold">Crypto Market Overview</h1>
+            <p class="text-zinc-500 dark:text-zinc-400 text-sm">Real-time asset prices and market metrics inside the Paymax ecosystem.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="filter-badge active" data-market-filter="all">All Coins</button>
+            <button class="filter-badge" data-market-filter="l1">Layer 1</button>
+            <button class="filter-badge" data-market-filter="stable">Stablecoins</button>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Prices Table Panel -->
+          <div class="lg:col-span-2 glass p-6 space-y-6">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-xs font-semibold uppercase">
+                    <th class="pb-3 w-10">#</th>
+                    <th class="pb-3">Asset</th>
+                    <th class="pb-3 text-right">Price</th>
+                    <th class="pb-3 text-right">24h Change</th>
+                    <th class="pb-3 text-right hidden sm:table-cell">24h Volume</th>
+                    <th class="pb-3 text-center">Trend (7d)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm" id="market-coins-tbody">
+                  <!-- Populated dynamically in JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Side Panel: Price Alerts & Education -->
+          <div class="space-y-8">
+            <!-- Simulated Alerts Form -->
+            <div class="glass p-6 space-y-6">
+              <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="bell" class="text-violet-500"></i> Setup Price Alert</h3>
+              <div class="space-y-4">
+                <div class="flex flex-col gap-2">
+                  <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Select Cryptocurrency</label>
+                  <select id="alert-coin-select" class="glass-input text-sm">
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="USDT">Tether (USDT)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                  </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Target Price (USD)</label>
+                  <input type="number" id="alert-price-input" class="glass-input text-sm" placeholder="e.g. 68000">
+                </div>
+                <button class="btn btn-primary w-full btn-sm" onclick="createPriceAlert()">Set Alert Notification</button>
+              </div>
+            </div>
+
+            <!-- News & Education -->
+            <div class="glass p-6 space-y-6">
+              <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="book-open" class="text-violet-500"></i> Smart Trader Guide</h3>
+              <div class="space-y-4">
+                <div class="p-3.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-1 cursor-pointer hover:border-violet-500/30 transition">
+                  <span class="text-[10px] text-violet-400 uppercase font-bold">Safety Guide</span>
+                  <h4 class="font-semibold text-sm">How to detect fake CBE transfer receipts</h4>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Scammers use mock apps to generate receipts. Paymax Escrow avoids this...</p>
+                </div>
+                <div class="p-3.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-1 cursor-pointer hover:border-violet-500/30 transition">
+                  <span class="text-[10px] text-violet-400 uppercase font-bold">SMS Verification</span>
+                  <h4 class="font-semibold text-sm">Validating Telebirr transactions securely</h4>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">By parsing incoming SMS notifications directly, Paymax scores transaction legitimacy...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 3: AUTHENTICATION / ONBOARDING ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-auth" class="page-view">
+      <div class="max-w-4xl mx-auto px-6 py-20">
+        <div class="glass grid md:grid-cols-5 overflow-hidden border-zinc-200/50 dark:border-zinc-800/50">
+          
+          <!-- Onboarding Info Left Panel -->
+          <div class="md:col-span-2 bg-gradient-to-br from-violet-950 to-zinc-950 p-8 flex flex-col justify-between text-zinc-300 relative border-r border-zinc-200 dark:border-zinc-800">
+            <div class="space-y-6 relative z-10">
+              <h2 class="text-2xl font-extrabold text-white">Trust is a Collective Asset</h2>
+              <p class="text-sm leading-relaxed text-zinc-400">
+                Paymax onboarding prioritizes security. Registering with an invitation connects your reputation to the inviter, granting instant trust points.
+              </p>
+              <div class="space-y-4 pt-4 border-t border-zinc-800">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500"><i data-lucide="shield-check" class="w-4 h-4"></i></div>
+                  <span class="text-xs font-semibold">99.8% Scam Prevention Rate</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-500"><i data-lucide="clock" class="w-4 h-4"></i></div>
+                  <span class="text-xs font-semibold">&lt; 3 Min Settlement Window</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-zinc-500 pt-12">
+              Paymax Trust Engine v2.4
+            </div>
+          </div>
+
+          <!-- Access Form Right Panel -->
+          <div class="md:col-span-3 p-8 bg-zinc-900/10 dark:bg-zinc-900/10 space-y-6">
+            <div class="flex border-b border-zinc-200 dark:border-zinc-800 pb-4">
+              <button class="tab-trigger active" id="auth-tab-login" onclick="switchAuthTab('login')">Sign In</button>
+              <button class="tab-trigger" id="auth-tab-register" onclick="switchAuthTab('register')">Create Account</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="auth-form-login" class="space-y-5" onsubmit="handleLoginSubmit(event)">
+              <div class="flex flex-col gap-2">
+                <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Email Address</label>
+                <input type="email" required id="login-email" class="glass-input text-sm" placeholder="name@example.com">
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Password</label>
+                <input type="password" required id="login-password" class="glass-input text-sm" placeholder="••••••••">
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Sign In to Dashboard</button>
+              <div class="text-center text-xs text-zinc-500">
+                Demo Admin Account: <strong class="text-violet-500">admin@paymax.com</strong> / Pass: <strong class="text-violet-500">admin</strong>
+              </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="auth-form-register" class="space-y-5 hidden" onsubmit="handleRegisterSubmit(event)">
+              <div class="flex flex-col gap-2">
+                <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Email Address</label>
+                <input type="email" required id="register-email" class="glass-input text-sm" placeholder="name@example.com">
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Password</label>
+                <input type="password" required id="register-password" class="glass-input text-sm" placeholder="••••••••">
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                  <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Invitation Code (Optional)</label>
+                  <span class="text-[10px] text-amber-500 font-semibold">Faster Verification</span>
+                </div>
+                <input type="text" id="register-invite" class="glass-input text-sm" placeholder="PAYMAX-XXXX-XXXX">
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">If empty, you must complete Enhanced verification and wait for manual reviewer audit.</p>
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Create Trader Account</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 4: KYC VERIFICATION STEP WIZARD ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-verify" class="page-view">
+      <div class="max-w-3xl mx-auto px-6 py-16">
+        <div class="glass p-8 space-y-8">
+          
+          <!-- Stepper Head -->
+          <div class="text-center space-y-2">
+            <h1 class="text-2xl font-extrabold">Complete Identity Verification</h1>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">Trade with verified reputation, not strangers.</p>
+          </div>
+
+          <!-- Horizontal Wizard Stepper -->
+          <div class="wizard-steps">
+            <div class="wizard-progress-bar" id="verify-progress-bar" style="width: 0%;"></div>
+            <div class="wizard-step active" data-step="1">
+              <div class="step-circle">1</div>
+              <div class="step-label">Phone & OTP</div>
+            </div>
+            <div class="wizard-step" data-step="2">
+              <div class="step-circle">2</div>
+              <div class="step-label">Email Confirm</div>
+            </div>
+            <div class="wizard-step" data-step="3">
+              <div class="step-circle">3</div>
+              <div class="step-label">Identity ID</div>
+            </div>
+            <div class="wizard-step" data-step="4">
+              <div class="step-circle">4</div>
+              <div class="step-label">Biometric Selfie</div>
+            </div>
+            <div class="wizard-step" data-step="5">
+              <div class="step-circle">5</div>
+              <div class="step-label">Approved</div>
+            </div>
+          </div>
+
+          <!-- Step Contents -->
+          <div id="verify-wizard-container">
+            
+            <!-- Step 1 Layout -->
+            <div class="verify-step-content space-y-6" id="verify-step-1">
+              <div class="space-y-4">
+                <h3 class="text-lg font-bold">1. Enter Mobile Phone Number</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">We will send a one-time passcode to secure your profile linkage.</p>
+                <div class="flex gap-3">
+                  <input type="text" id="verify-phone-input" class="glass-input flex-1 text-sm" placeholder="+251 911 234 567" value="+251 900 123 456">
+                  <button class="btn btn-secondary text-sm" onclick="sendMockOtp()">Send OTP</button>
+                </div>
+                <div id="otp-input-area" class="space-y-3 hidden bg-zinc-950/20 p-4 border border-zinc-800 rounded-xl">
+                  <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Enter 6-Digit Code</label>
+                  <div class="flex gap-3">
+                    <input type="text" id="verify-otp-input" class="glass-input text-center text-lg tracking-widest font-mono" max="6" placeholder="482910">
+                    <button class="btn btn-primary text-sm" onclick="submitOtp()">Verify Code</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 Layout -->
+            <div class="verify-step-content space-y-6 hidden" id="verify-step-2">
+              <div class="space-y-4">
+                <h3 class="text-lg font-bold">2. Verify Email Address</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">We sent a verification link to your registered email address. Click the simulation link below to activate.</p>
+                <div class="p-6 bg-zinc-950/20 border border-zinc-800 rounded-xl text-center space-y-4">
+                  <p class="text-xs font-mono text-zinc-400">Mailbox message for: <span id="verify-email-display" class="text-violet-500">trader@paymax.com</span></p>
+                  <button class="btn btn-primary btn-sm mx-auto" onclick="confirmEmailKyc()">[SIMULATE] Click Verification Link</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 Layout -->
+            <div class="verify-step-content space-y-6 hidden" id="verify-step-3">
+              <div class="space-y-4">
+                <h3 class="text-lg font-bold">3. Government ID Verification</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Upload your passport or national identity card to match your name with payment accounts.</p>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="border border-zinc-800 rounded-xl p-4 flex flex-col gap-2 cursor-pointer hover:border-violet-500/50 bg-zinc-950/15" onclick="selectIdType('passport')">
+                    <div class="flex items-center justify-between">
+                      <span class="font-semibold text-sm">International Passport</span>
+                      <i data-lucide="book" class="w-4 h-4 text-zinc-500"></i>
+                    </div>
+                    <span class="text-xs text-zinc-500 dark:text-zinc-400">Recommended for non-local settlements.</span>
+                  </div>
+                  <div class="border border-zinc-800 rounded-xl p-4 flex flex-col gap-2 cursor-pointer hover:border-violet-500/50 bg-zinc-950/15" onclick="selectIdType('national_id')">
+                    <div class="flex items-center justify-between">
+                      <span class="font-semibold text-sm">National Identity Card</span>
+                      <i data-lucide="contact" class="w-4 h-4 text-zinc-500"></i>
+                    </div>
+                    <span class="text-xs text-zinc-500 dark:text-zinc-400">CBE / Telebirr account name matched.</span>
+                  </div>
+                </div>
+                <!-- Simulated Upload area -->
+                <div id="id-upload-area" class="border-2 border-dashed border-zinc-800 rounded-xl p-8 text-center space-y-4 hidden bg-zinc-950/10">
+                  <i data-lucide="upload-cloud" class="w-10 h-10 text-zinc-500 mx-auto"></i>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Click to upload document photo or drag & drop here.</p>
+                  <button class="btn btn-secondary btn-sm mx-auto" onclick="simulateKycUpload()">Simulate Upload ID</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 Layout -->
+            <div class="verify-step-content space-y-6 hidden" id="verify-step-4">
+              <div class="space-y-4">
+                <h3 class="text-lg font-bold">4. Biometric Selfie & Liveness Detection</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Position your face inside the framing circle. We will verify real-time liveness to prevent photo spoofing.</p>
+                <div class="flex justify-center">
+                  <div class="relative w-48 h-48 rounded-full border-4 border-violet-500 overflow-hidden flex items-center justify-center bg-zinc-950">
+                    <div class="absolute inset-0 bg-gradient-radial from-violet-500/10 to-transparent animate-pulse"></div>
+                    <i data-lucide="user" class="w-20 h-20 text-zinc-700"></i>
+                    <!-- Scanning HUD -->
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                      <span class="text-[9px] uppercase tracking-wider font-bold bg-violet-600 px-2 py-0.5 rounded text-white animate-pulse" id="selfie-hud-status">Awaiting Camera</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary mx-auto block btn-sm" onclick="runSelfieLivenessScan()">Activate Liveness Scan</button>
+              </div>
+            </div>
+
+            <!-- Step 5 Layout -->
+            <div class="verify-step-content space-y-6 hidden text-center" id="verify-step-5">
+              <div class="space-y-6 py-6">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/15 text-emerald-500 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/10">
+                  <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                <div class="space-y-2">
+                  <h3 class="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Profile Verification Completed!</h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400">Your documents were matching our bank partner databases automatically.</p>
+                </div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 font-bold mx-auto">
+                  <i data-lucide="check-circle-2" class="w-5 h-5"></i> Verified Trader Badge Active
+                </div>
+                <button class="btn btn-primary w-full" onclick="completeKycWorkflow()">Enter Trading Workspace</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 5: USER DASHBOARD WORKSPACE ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-dashboard" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      
+      <!-- Dashboard Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-teal-500 flex items-center justify-center">
+            <i data-lucide="shield-check" class="text-white w-4 h-4"></i>
+          </div>
+          <span class="font-bold text-md tracking-tight">Paymax Desk</span>
+        </div>
+        <div class="py-4">
+          <a href="#dashboard" class="sidebar-link active" data-sidebar="dashboard">
+            <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+          </a>
+          <a href="#marketplace" class="sidebar-link" data-sidebar="marketplace">
+            <i data-lucide="arrow-left-right" class="w-5 h-5"></i> P2P Marketplace
+          </a>
+          <a href="#trade" class="sidebar-link" data-sidebar="trade" id="sidebar-active-trades-link">
+            <i data-lucide="handshake" class="w-5 h-5"></i> Active Trades
+            <span class="ml-auto w-2 h-2 rounded-full bg-emerald-500 hidden" id="sidebar-trade-badge-dot"></span>
+          </a>
+          <a href="#admin" class="sidebar-link hidden" data-sidebar="admin" id="sidebar-admin-link">
+            <i data-lucide="gavel" class="w-5 h-5"></i> Admin Control
+          </a>
+          <a href="#help" class="sidebar-link" data-sidebar="help">
+            <i data-lucide="help-circle" class="w-5 h-5"></i> Help Desk
+          </a>
+          <a href="#settings" class="sidebar-link" data-sidebar="settings">
+            <i data-lucide="settings" class="w-5 h-5"></i> Settings
+          </a>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6 border-t border-zinc-200 dark:border-zinc-800 pt-6">
+          <button class="btn btn-secondary w-full btn-sm flex items-center justify-center gap-2" onclick="logoutUser()">
+            <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- Dashboard View Content -->
+      <div class="dashboard-content">
+        <div class="max-w-7xl mx-auto space-y-8">
+          
+          <!-- Head / User Status Summary -->
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="space-y-1">
+              <h2 class="text-2xl font-extrabold flex items-center gap-2">
+                Welcome back, <span id="dash-user-email">trader@paymax.com</span>
+                <span id="dash-verified-badge" class="badge-verified"><i data-lucide="check" class="w-3 h-3"></i> Verified</span>
+              </h2>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Account linked since July 2026</p>
+            </div>
+            <!-- Trust Score indicator -->
+            <div class="glass px-5 py-3 border-zinc-200 dark:border-zinc-800 flex items-center gap-4">
+              <div class="space-y-0.5">
+                <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Dynamic Trust Score</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xl font-black text-emerald-500" id="dash-trust-score-num">98</span>
+                  <span class="text-xs text-zinc-500 dark:text-zinc-400">/ 100</span>
+                </div>
+              </div>
+              <div class="w-12 h-12 rounded-full border-4 border-emerald-500/20 border-t-emerald-500 flex items-center justify-center">
+                <i data-lucide="shield-check" class="text-emerald-500 w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Metric Cards Grid -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Balances -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <span class="text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Wallet Custody Balance</span>
+              <h3 class="text-2xl font-extrabold" id="dash-wallet-usd">$2,450.00</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 font-mono">2,450.00 USDT</p>
+            </div>
+            <!-- Monthly Trades -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <span class="text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Active Escrow locked</span>
+              <h3 class="text-2xl font-extrabold text-violet-500" id="dash-active-escrow-amount">$0.00</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">0 Trades in progress</p>
+            </div>
+            <!-- success rate -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <span class="text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Success Rate</span>
+              <h3 class="text-2xl font-extrabold text-emerald-500">100%</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">42 trades settled</p>
+            </div>
+            <!-- avg response time -->
+            <div class="glass p-5 space-y-2 border-zinc-200 dark:border-zinc-800">
+              <span class="text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Avg Response Time</span>
+              <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50">1.8 Mins</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Faster than 96% merchants</p>
+            </div>
+          </div>
+
+          <!-- Main Dashboard Interactive Content -->
+          <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Trading chart and Active Offers -->
+            <div class="lg:col-span-2 space-y-8">
+              <!-- Volume chart -->
+              <div class="glass p-6 space-y-4 border-zinc-200/50 dark:border-zinc-800/50">
+                <h3 class="text-lg font-bold">Monthly Trading Activity</h3>
+                <div style="height:220px; width: 100%; position: relative;">
+                  <canvas id="dashboard-volume-chart"></canvas>
+                </div>
+              </div>
+              
+              <!-- Circle of Trust Visual -->
+              <div class="glass p-6 space-y-4 border-zinc-200/50 dark:border-zinc-800/50">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-bold">My Circle of Trust</h3>
+                  <span class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold">Reputational Node Mappings</span>
+                </div>
+                <div class="circle-of-trust-container relative">
+                  <svg id="circle-of-trust-svg" class="circle-of-trust-svg"></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar dashboard panels: Invitation Codes & Active Transactions -->
+            <div class="space-y-8">
+              <!-- Invite Code Management -->
+              <div class="glass p-6 space-y-6">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="ticket" class="text-violet-500"></i> My Invitation Codes</h3>
+                <div class="space-y-4">
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Invited users who follow rules increase your trust rating. Inviting scammers degrades your score.</p>
+                  
+                  <div class="space-y-2" id="dash-invites-list">
+                    <!-- Populated dynamically -->
+                  </div>
+                  
+                  <div class="border-t border-zinc-200 dark:border-zinc-800 pt-4 flex gap-2">
+                    <input type="text" id="custom-invite-code-generate" readonly class="glass-input text-xs font-mono bg-zinc-950/20 text-zinc-400 flex-1" value="PAYMAX-8821-VIO">
+                    <button class="btn btn-primary btn-sm" onclick="claimInviteCode()">Claim Code</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- P2P Quick Actions -->
+              <div class="glass p-6 space-y-4">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="arrow-left-right" class="text-violet-500"></i> P2P Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <a href="#marketplace" class="btn btn-primary btn-sm justify-center py-2.5">Buy Assets</a>
+                  <a href="#marketplace" class="btn btn-secondary btn-sm justify-center py-2.5">Post an Offer</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 6: P2P MARKETPLACE offers ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-marketplace" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      <div class="dashboard-content" style="margin-left:260px;">
+        <div class="max-w-7xl mx-auto space-y-8">
+          
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-zinc-200 dark:border-zinc-800 pb-6">
+            <div class="space-y-1">
+              <h2 class="text-2xl font-extrabold">Peer-to-Peer Marketplace</h2>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Exchange digital assets with pre-screened traders through escrow guarantees.</p>
+            </div>
+            <div class="flex border border-zinc-200 dark:border-zinc-800 p-1 bg-zinc-100 dark:bg-zinc-900 rounded-xl">
+              <button class="filter-badge active" id="p2p-toggle-buy" onclick="toggleP2pOfferMode('buy')">Buy Assets</button>
+              <button class="filter-badge" id="p2p-toggle-sell" onclick="toggleP2pOfferMode('sell')">Sell Assets</button>
+            </div>
+          </div>
+
+          <!-- Advanced Filters Panel -->
+          <div class="glass p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-zinc-200 dark:border-zinc-800">
+            <!-- Cryptos -->
+            <div class="flex flex-col gap-2">
+              <label class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase">Asset Token</label>
+              <select id="p2p-filter-coin" class="glass-input text-xs" onchange="applyP2pFilters()">
+                <option value="USDT">USDT (Tether)</option>
+                <option value="BTC">BTC (Bitcoin)</option>
+                <option value="ETH">ETH (Ethereum)</option>
+              </select>
+            </div>
+            <!-- Payment Methods -->
+            <div class="flex flex-col gap-2">
+              <label class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase">Payment Provider</label>
+              <select id="p2p-filter-payment" class="glass-input text-xs" onchange="applyP2pFilters()">
+                <option value="ALL">All Providers</option>
+                <option value="Telebirr">Telebirr</option>
+                <option value="CBE">Commercial Bank of Ethiopia (CBE)</option>
+                <option value="Abyssinia">Bank of Abyssinia</option>
+              </select>
+            </div>
+            <!-- Min amount -->
+            <div class="flex flex-col gap-2">
+              <label class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase">Transaction Size (ETB)</label>
+              <input type="number" id="p2p-filter-amount" class="glass-input text-xs" placeholder="e.g. 5000" oninput="applyP2pFilters()">
+            </div>
+            <!-- Trust score filter -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <label class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase">Min Trust Rating</label>
+                <span id="p2p-trust-val-lbl" class="text-xs text-violet-500 font-bold">90+</span>
+              </div>
+              <input type="range" id="p2p-filter-trust" min="80" max="100" value="90" class="w-full accent-violet-500" oninput="updateTrustLabel(this.value); applyP2pFilters()">
+            </div>
+          </div>
+
+          <!-- Offers Table Panel -->
+          <div class="glass p-6 border-zinc-200 dark:border-zinc-800">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-xs font-semibold uppercase">
+                    <th class="pb-3">Advertiser Profile</th>
+                    <th class="pb-3 text-right">Unit Exchange Rate</th>
+                    <th class="pb-3 text-right">Available Allocation</th>
+                    <th class="pb-3 text-right">Payment Badges</th>
+                    <th class="pb-3 text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm" id="p2p-offers-tbody">
+                  <!-- Populated dynamically in JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 7: ESCROW TRADE WORKSPACE & SMART SMS PARSER ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-trade" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      <div class="dashboard-content" style="margin-left:260px;">
+        <div class="max-w-6xl mx-auto space-y-8">
+          
+          <!-- Header and State -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <a href="#marketplace" class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-50"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+                <h2 class="text-2xl font-extrabold">Active Escrow Settlement</h2>
+              </div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Trade reference ID: <span class="font-mono text-zinc-900 dark:text-zinc-50" id="active-trade-ref-label">#PM-882319</span></p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-sm font-bold text-emerald-500" id="active-trade-status-label">ESCROW FUNDS LOCKED</span>
+            </div>
+          </div>
+
+          <!-- Split Workspace Layout -->
+          <div class="grid lg:grid-cols-5 gap-8">
+            
+            <!-- Left Side: Chat Panel & Escrow steps -->
+            <div class="lg:col-span-3 space-y-6">
+              <!-- Progress Steps -->
+              <div class="glass p-5 space-y-4 border-zinc-200 dark:border-zinc-800 bg-zinc-900/10 dark:bg-zinc-900/10">
+                <h3 class="text-sm font-bold uppercase text-zinc-500 dark:text-zinc-400">Escrow Transaction Progress</h3>
+                
+                <div class="space-y-4">
+                  <div class="flex gap-3 items-start" id="trade-step-node-1">
+                    <div class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></div>
+                    <div class="space-y-0.5">
+                      <h4 class="text-sm font-bold text-emerald-500">1. Escrow Deposited</h4>
+                      <p class="text-xs text-zinc-500 dark:text-zinc-400">Crypto collateral was pre-funded by seller and secured in Paymax.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-3 items-start" id="trade-step-node-2">
+                    <div class="w-6 h-6 rounded-full bg-violet-600 text-white flex items-center justify-center text-xs font-bold mt-0.5" id="trade-step-num-2">2</div>
+                    <div class="space-y-0.5">
+                      <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-50" id="trade-step-title-2">2. Transfer Fiat Currency</h4>
+                      <p class="text-xs text-zinc-500 dark:text-zinc-400">Send the matching payment to the seller's payment details shown in Chat.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-3 items-start" id="trade-step-node-3">
+                    <div class="w-6 h-6 rounded-full bg-zinc-800 text-zinc-500 flex items-center justify-center text-xs font-bold mt-0.5" id="trade-step-num-3">3</div>
+                    <div class="space-y-0.5">
+                      <h4 class="text-sm font-bold text-zinc-500" id="trade-step-title-3">3. Smart Payment Verification</h4>
+                      <p class="text-xs text-zinc-500 dark:text-zinc-400">Copy the bank's transaction SMS and paste it on the verification panel to verify settlement.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-3 items-start" id="trade-step-node-4">
+                    <div class="w-6 h-6 rounded-full bg-zinc-800 text-zinc-500 flex items-center justify-center text-xs font-bold mt-0.5" id="trade-step-num-4">4</div>
+                    <div class="space-y-0.5">
+                      <h4 class="text-sm font-bold text-zinc-500" id="trade-step-title-4">4. Release Funds</h4>
+                      <p class="text-xs text-zinc-500 dark:text-zinc-400">Seller confirms transaction and releases cryptocurrency to buyer wallet.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Area -->
+              <div class="glass border-zinc-200 dark:border-zinc-800 flex flex-col h-[350px]">
+                <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/50 flex justify-between items-center">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-zinc-700 flex items-center justify-center text-xs font-bold text-white font-mono" id="trade-partner-avatar">JD</div>
+                    <div>
+                      <h4 class="text-sm font-bold" id="trade-partner-name">John Doe</h4>
+                      <p class="text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Online</p>
+                    </div>
+                  </div>
+                  <span class="text-xs text-zinc-500 dark:text-zinc-400">Response &lt; 3 mins</span>
+                </div>
+                <!-- Chat Message logs -->
+                <div class="flex-1 overflow-y-auto p-4 space-y-4" id="trade-chat-messages">
+                  <!-- Loaded dynamically in JavaScript -->
+                </div>
+                <!-- Message input footer -->
+                <div class="p-3 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
+                  <input type="text" id="trade-chat-input" class="glass-input text-xs flex-1" placeholder="Type a message to trader...">
+                  <button class="btn btn-primary btn-sm" onclick="sendTradeChatMessage()"><i data-lucide="send" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Smart Payment Verification Engine -->
+            <div class="lg:col-span-2 space-y-6">
+              <!-- Smart Verification Card -->
+              <div class="glass p-6 space-y-6 border-violet-500/20 shadow-violet-500/[0.02]">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="smartphone" class="text-violet-500"></i> Smart Payment Parser</h3>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Paste the receipt SMS notification sent by Telebirr, CBE, or other providers. Paymax validates transaction signatures and variables.</p>
+                
+                <!-- Sample copy code block -->
+                <div class="bg-zinc-150 dark:bg-zinc-950 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 text-[11px] space-y-2">
+                  <div class="flex justify-between items-center text-zinc-500 dark:text-zinc-400 font-bold uppercase">
+                    <span>Sample CBE SMS Proof</span>
+                    <button class="text-violet-500 hover:text-violet-400 font-bold uppercase" onclick="copySampleSms('cbe')">Use Template</button>
+                  </div>
+                  <pre class="font-mono whitespace-pre-wrap select-all text-zinc-500 dark:text-zinc-400" id="sms-sample-cbe">Dear customer, ETB 12,450.00 has been transferred from your account ending *204 to Yohannes Assefa. Transaction Reference: CBE-882319A, Date: 06/07/2026.</pre>
+                </div>
+
+                <div class="bg-zinc-150 dark:bg-zinc-950 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 text-[11px] space-y-2">
+                  <div class="flex justify-between items-center text-zinc-500 dark:text-zinc-400 font-bold uppercase">
+                    <span>Sample Telebirr SMS Proof</span>
+                    <button class="text-violet-500 hover:text-violet-400 font-bold uppercase" onclick="copySampleSms('telebirr')">Use Template</button>
+                  </div>
+                  <pre class="font-mono whitespace-pre-wrap select-all text-zinc-500 dark:text-zinc-400" id="sms-sample-telebirr">Your Telebirr account transfer of ETB 25,000.00 to merchant John Doe succeeded. Transaction Ref: TXN9982736283. Bal: 145.00 ETB.</pre>
+                </div>
+
+                <!-- Input area -->
+                <div class="space-y-4">
+                  <div class="flex flex-col gap-2">
+                    <label class="text-xs text-zinc-500 dark:text-zinc-400 font-bold uppercase">Paste SMS Content</label>
+                    <textarea id="trade-sms-paste-area" rows="4" class="glass-input text-xs font-mono" placeholder="Paste incoming banking notification SMS here..."></textarea>
+                  </div>
+                  <button class="btn btn-primary w-full btn-sm" onclick="parseSmsEvidence()">Parse & Verify Payment</button>
+                </div>
+
+                <!-- Match Results widget -->
+                <div id="sms-match-results" class="hidden p-4 rounded-xl border space-y-3 bg-zinc-950/20 border-zinc-800">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400">SMART MATCH METRICS</span>
+                    <span class="text-xs font-bold px-2 py-0.5 rounded" id="match-score-badge">98% Match</span>
+                  </div>
+                  <div class="space-y-1.5 text-xs">
+                    <div class="flex justify-between"><span class="text-zinc-500 dark:text-zinc-400">Amount Extracted:</span> <span class="font-semibold font-mono" id="parsed-val-amount">ETB 12,450.00</span></div>
+                    <div class="flex justify-between"><span class="text-zinc-500 dark:text-zinc-400">Reference Hash:</span> <span class="font-semibold font-mono" id="parsed-val-ref">CBE-882319A</span></div>
+                    <div class="flex justify-between"><span class="text-zinc-500 dark:text-zinc-400">Target Match:</span> <span class="font-semibold font-mono text-emerald-500" id="parsed-val-match">Matches Escrow</span></div>
+                  </div>
+                </div>
+
+                <!-- Optional screenshot -->
+                <div class="border-t border-zinc-200 dark:border-zinc-800 pt-4 flex flex-col gap-2">
+                  <label class="text-[10px] text-zinc-500 dark:text-zinc-400 font-bold uppercase">Screenshot Backup (Optional)</label>
+                  <div class="border border-dashed border-zinc-800 p-4 rounded-lg text-center cursor-pointer hover:bg-zinc-950/10">
+                    <span class="text-xs text-zinc-500 dark:text-zinc-400"><i data-lucide="image" class="inline w-4 h-4 mr-1"></i> Upload Supporting Image</span>
+                  </div>
+                </div>
+
+                <!-- Escrow Action Controllers -->
+                <div class="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex gap-3">
+                  <button class="btn btn-secondary btn-sm flex-1" onclick="initiateDispute()">Dispute Trade</button>
+                  <button class="btn btn-primary btn-sm flex-1" id="escrow-release-btn" disabled onclick="releaseEscrowPayment()">Confirm Release</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 8: ADMINISTRATIVE CONTROL CONSOLE ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-admin" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      <div class="dashboard-content" style="margin-left:260px;">
+        <div class="max-w-7xl mx-auto space-y-8">
+          
+          <div class="flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800 pb-6">
+            <div class="space-y-1">
+              <h2 class="text-2xl font-extrabold text-red-500 flex items-center gap-2"><i data-lucide="gavel" class="w-6 h-6"></i> Paymax Admin Desk</h2>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Resolve escrow disputes, manage KYCs, and review threat audit alerts.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400">Threat Level: <strong class="text-emerald-500">Low</strong></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+          </div>
+
+          <!-- Admin Tabs -->
+          <div class="flex border-b border-zinc-200 dark:border-zinc-800 pb-4">
+            <button class="tab-trigger active" id="admin-tab-disputes" onclick="switchAdminTab('disputes')">Escrow Disputes</button>
+            <button class="tab-trigger" id="admin-tab-kyc" onclick="switchAdminTab('kyc')">Verification Queue</button>
+            <button class="tab-trigger" id="admin-tab-fraud" onclick="switchAdminTab('fraud')">Fraud Alerts Engine</button>
+          </div>
+
+          <!-- Disputes Queue Panel -->
+          <div id="admin-section-disputes" class="space-y-6">
+            <div class="glass p-6 border-zinc-200 dark:border-zinc-800">
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-xs font-semibold uppercase">
+                      <th class="pb-3">Trade ID</th>
+                      <th class="pb-3">Disputants</th>
+                      <th class="pb-3">Value</th>
+                      <th class="pb-3">Reason / SMS Evidence</th>
+                      <th class="pb-3 text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm" id="admin-disputes-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- KYC Queue Panel -->
+          <div id="admin-section-kyc" class="space-y-6 hidden">
+            <div class="glass p-6 border-zinc-200 dark:border-zinc-800">
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-xs font-semibold uppercase">
+                      <th class="pb-3">Applicant</th>
+                      <th class="pb-3">Method Type</th>
+                      <th class="pb-3">Document Match</th>
+                      <th class="pb-3">Selfie Match</th>
+                      <th class="pb-3 text-center">Verdict</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm" id="admin-kyc-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fraud System log -->
+          <div id="admin-section-fraud" class="space-y-6 hidden">
+            <div class="glass p-6 border-zinc-200 dark:border-zinc-800 space-y-4">
+              <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
+                <h3 class="font-bold text-sm">Security Fingerprinting Alert Console</h3>
+                <button class="btn btn-secondary btn-sm" onclick="clearFraudAlerts()">Clear Alert Log</button>
+              </div>
+              <div class="space-y-3" id="admin-fraud-logs">
+                <!-- Log feed populated dynamically in JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 9: HELP CENTER ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-help" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      <div class="dashboard-content" id="help-content-wrapper" style="margin-left: 260px;">
+        <div class="max-w-4xl mx-auto space-y-12">
+          
+          <div class="text-center space-y-4">
+            <h1 class="text-3xl font-extrabold">Paymax Help & Education Center</h1>
+            <p class="text-zinc-500 dark:text-zinc-400 text-sm">Learn how our escrow platform guarantees complete protection from P2P scams.</p>
+          </div>
+
+          <!-- Knowledge Base Search -->
+          <div class="flex gap-2">
+            <input type="text" id="kb-search-input" class="glass-input flex-1 text-sm" placeholder="Search safety articles, merchant guides, OTP help...">
+            <button class="btn btn-primary btn-sm" onclick="filterKb()">Search</button>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Articles -->
+            <div class="glass p-6 space-y-4 border-zinc-200 dark:border-zinc-800" id="kb-articles-list">
+              <h3 class="text-lg font-bold">Frequently Read Guides</h3>
+              <div class="space-y-3">
+                <div class="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+                  <h4 class="font-semibold text-sm hover:text-violet-500 cursor-pointer">Avoiding SMS spoofing scams</h4>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Scammers trick users using spoofed SMS headers. Learn how Paymax parses incoming texts directly to check hashes.</p>
+                </div>
+                <div class="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+                  <h4 class="font-semibold text-sm hover:text-violet-500 cursor-pointer">Understanding the Escrow Locking system</h4>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Before a buy/sell offer goes public, the cryptocurrency must be locked in the escrow ledger...</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Chat Simulation Widget -->
+            <div class="glass p-6 border-zinc-200 dark:border-zinc-800 flex flex-col h-[380px]">
+              <div class="border-b border-zinc-800 pb-3 flex items-center justify-between">
+                <h3 class="text-sm font-bold flex items-center gap-2"><i data-lucide="message-square" class="text-violet-500"></i> Paymax Live Assistant</h3>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              </div>
+              <div class="flex-1 overflow-y-auto py-4 space-y-3 text-xs" id="help-chat-messages">
+                <div class="bg-zinc-150 dark:bg-zinc-850 p-2.5 rounded-xl max-w-[80%] border border-zinc-800">
+                  Hello! How can we assist you with Paymax verification, escrow, or SMS matching today?
+                </div>
+              </div>
+              <div class="pt-3 border-t border-zinc-800 flex gap-2">
+                <input type="text" id="help-chat-input" class="glass-input text-xs flex-1" placeholder="Type your question here...">
+                <button class="btn btn-primary btn-sm" onclick="sendHelpChatMessage()"><i data-lucide="send" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━ VIEW 10: USER SETTINGS & SECURITY ━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div id="view-settings" class="page-view bg-zinc-50 dark:bg-zinc-950">
+      <div class="dashboard-content" style="margin-left: 260px;">
+        <div class="max-w-4xl mx-auto space-y-8">
+          
+          <div class="border-b border-zinc-200 dark:border-zinc-800 pb-6">
+            <h1 class="text-2xl font-extrabold">Account Settings & Trust Controls</h1>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">Configure security settings, banking channels, and regional settings.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Navigation -->
+            <div class="space-y-2">
+              <button class="w-full text-left p-3 rounded-lg font-semibold text-sm active bg-zinc-200 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 text-violet-500">Security & 2FA</button>
+              <button class="w-full text-left p-3 rounded-lg font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 dark:text-zinc-400">Payment Accounts</button>
+              <button class="w-full text-left p-3 rounded-lg font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 dark:text-zinc-400">Session Controls</button>
+            </div>
+
+            <!-- Settings Workspace panels -->
+            <div class="md:col-span-2 space-y-6">
+              
+              <!-- 2FA & Password settings -->
+              <div class="glass p-6 space-y-6 border-zinc-200 dark:border-zinc-800">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="shield-check" class="text-violet-500"></i> Two-Factor Authenticator (2FA)</h3>
+                <div class="flex justify-between items-center">
+                  <div class="space-y-0.5">
+                    <span class="font-bold text-sm">Require OTP for Escrow Release</span>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Require an authenticator code when confirming trade payments.</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="settings-2fa-toggle" checked onchange="toggle2faSimulation(this)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Regional Settings -->
+              <div class="glass p-6 space-y-4 border-zinc-200 dark:border-zinc-800">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="languages" class="text-violet-500"></i> Localization Settings</h3>
+                <div class="flex flex-col gap-2">
+                  <label class="text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase">Preferred Language</label>
+                  <select id="settings-language-select" class="glass-input text-sm" onchange="toggleLanguageTranslation(this.value)">
+                    <option value="en">English (Default)</option>
+                    <option value="am">Amharic (አማርኛ)</option>
+                    <option value="ar">Arabic (العربية)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Merchant security lock deposit mock -->
+              <div class="glass p-6 space-y-4 border-zinc-200 dark:border-zinc-800">
+                <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="award" class="text-violet-500"></i> Merchant Badge Status</h3>
+                <div class="p-4 bg-violet-600/5 border border-violet-500/20 rounded-xl space-y-3">
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">Merchants can lock a security collateral deposit (e.g. 500 USDT) into the protocol pool. In exchange, you receive a Premium Merchant Badge which boosts offer ranking and volume limits.</p>
+                  <button class="btn btn-primary btn-sm" onclick="toggleMerchantDepositSimulation()">Request Merchant Upgrade</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════ DIALOG MODALS ═══════════════════════ -->
+  <!-- Verification Success Badge Modal -->
+  <div class="modal-overlay" id="verified-badge-modal">
+    <div class="modal-content glass p-8 text-center space-y-6 border-zinc-200 dark:border-zinc-850">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/15 text-emerald-500 flex items-center justify-center mx-auto animate-bounce">
+        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+      </div>
+      <div class="space-y-2">
+        <h2 class="text-2xl font-bold">Verified Trader Badge Awarded</h2>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400">Congratulations! You are now part of the Paymax trust network. You can begin trading assets safely.</p>
+      </div>
+      <button class="btn btn-primary w-full" onclick="closeBadgeModal()">Access Dashboard</button>
+    </div>
+  </div>
+
+  <!-- Global Toast Alert -->
+  <div id="toast-message" class="fixed bottom-6 right-6 z-100 glass px-6 py-4 border-zinc-200 dark:border-zinc-800 flex items-center gap-3 shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-violet-600/10 text-violet-500" id="toast-icon-bg">
+      <i data-lucide="info" class="w-4 h-4" id="toast-icon-svg"></i>
+    </div>
+    <div>
+      <h5 class="text-sm font-bold text-zinc-900 dark:text-zinc-50" id="toast-title">Notification</h5>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400" id="toast-body">Description text</p>
+    </div>
+  </div>
+
+  <!-- JS Controller -->
+  <script src="js/main.js"></script>
+</body>
+</html>
